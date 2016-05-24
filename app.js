@@ -1,5 +1,5 @@
-var app = angular.module("MyTodoList", []);
-app.config(function(){
+var app = angular.module("MyTodoList", ["firebase"]);
+app.controller("myCtrl", function($scope, $firebaseObject) {
 
   // Initialize Firebase
   var config = {
@@ -8,12 +8,16 @@ app.config(function(){
     databaseURL: "https://fir-testing-c97b4.firebaseio.com",
     storageBucket: "fir-testing-c97b4.appspot.com",
   };
-
   firebase.initializeApp(config);
 
-});
-app.controller("myCtrl", function($scope) {
-
+  // Initialise $scope.todos
+  firebase.database().ref('todos/').once('value', function(snapshot) {
+    $scope.todos = snapshot.val();
+    console.log($scope.todos);
+    console.log("ran");
+  });
+  
+  $scope.newTodo = '';
 
   // Get a ref to the database service
   var database = firebase.database();
@@ -45,6 +49,14 @@ app.controller("myCtrl", function($scope) {
     $scope.newTodo = '';
 
     return;
+  };
+
+  $scope.removeTodo = function removeTodo($scope, key){
+
+    var updates = {};
+    updates['/todos/' + key] = null;
+
+    return database.ref().update(updates);
   };
 
   // Watch the firebase database
