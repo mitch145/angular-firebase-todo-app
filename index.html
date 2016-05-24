@@ -3,10 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>AngularFire</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<!-- Stylesheet -->
 	<link rel="stylesheet" href="style.css">
 	<!-- Font -->
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
 	<!-- AngularJS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<!-- Firebase -->
@@ -20,16 +23,14 @@
 <body ng-app="MyTodoList" ng-controller="myCtrl">
 	<div class="container">
 		<div class="row">
-			<h1>Mitch's Todo App</h1>
-			<form>
-				<label>Create a new todo: <input type="text" ng-model="$scope.newTodo" ng-init=""/></label>
-				<input type="submit" ng-click="addTodo($scope)" placeholder="Add a todo"></input>
-			</form>
-
-			<div ng-repeat="x in todos">
-				<ul>
-			    	<li><p>Todo: {{x.body}} <button ng-click="removeTodo($scope, x.key)">X</button></p></li>
-			    </ul>
+			<div class="col-xs-12">
+				<h1 class="text-center">Mitch's Todo App</h1>
+				<form class="text-center" ng-submit="addTodo($scope)">
+					<label class="todo-input"><input class="text-center" type="submit/text" ng-model="$scope.newTodo" placeholder="Add a todo"/></label>
+				</form>
+				<div ng-repeat="x in todos" class="text-center">
+					<p>{{x.body}} <button ng-click="removeTodo($scope, x.key)">X</button></p>
+				</div>
 			</div>
 		</div>
 	</div>
