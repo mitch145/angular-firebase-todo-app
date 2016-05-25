@@ -12,12 +12,15 @@ app.controller("myCtrl", function($scope, $firebaseObject) {
 
   // Initialise $scope.todos
   firebase.database().ref('todos/').once('value', function(snapshot) {
-    $scope.todos = snapshot.val();
+    $scope.$apply(function() {
+      $scope.todos = snapshot.val();
+    });
+
+
     console.log($scope.todos);
     console.log("ran");
   });
   
-  $scope.newTodo = '';
 
   // Get a ref to the database service
   var database = firebase.database();

@@ -18,7 +18,7 @@ h1{
 }
 
 form{
-	padding-bottom: 60px;
+	padding-bottom: 20px;
 }
 
 .todo-input{
@@ -33,9 +33,21 @@ form{
 	width: 100%;
 }
 
+
+.todo-item button{
+	background-color: #2ecc71;
+	color: #ecf0f1;
+	border: none;
+	font-size: 30px;
+}
+
+.todo-item button:hover{
+	text-decoration: line-through;
+}
+
 /* Various Fixes */
 
-textarea:focus, input:focus{
+textarea:focus, input:focus, button:focus{
     outline: none;
 }
 
