@@ -1,6 +1,10 @@
 var app = angular.module("MyTodoList", ["firebase"]);
 app.controller("myCtrl", function($scope, $firebaseObject) {
 
+  $scope.searchTodos = '';
+  // $scope.newTodo = '';
+
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCYsz02dbZPrjTvEGfpmwLLY_-qnA8cOB4",
@@ -15,10 +19,6 @@ app.controller("myCtrl", function($scope, $firebaseObject) {
     $scope.$apply(function() {
       $scope.todos = snapshot.val();
     });
-
-
-    console.log($scope.todos);
-    console.log("ran");
   });
   
 
@@ -63,8 +63,14 @@ app.controller("myCtrl", function($scope, $firebaseObject) {
   };
 
   // Watch the firebase database
-  firebase.database().ref('todos/').on('value', function(snapshot) {
+  firebase.database().ref('todos/').on('value', function(snapshot){
     $scope.todos = snapshot.val();
+    console.log("length");
+    console.log($scope.todos.length);
+    for(i = 0; i < $scope.todos.length; i++){
+      console.log($scope.todos[i].body);
+    }
+    
   });
 
 });

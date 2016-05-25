@@ -45,6 +45,18 @@ form{
 	text-decoration: line-through;
 }
 
+.search-input{
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: #ecf0f1;
+	font-size: 30px;
+	width: 100%;
+}
+
+.search-input input{
+	width: 100%;
+}
+
 /* Various Fixes */
 
 textarea:focus, input:focus, button:focus{

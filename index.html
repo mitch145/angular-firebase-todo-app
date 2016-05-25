@@ -3,9 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>AngularFire</title>
-	<!-- Bootstrap -->
+	<title>Mitch's Todo App</title>
+	<!-- Bootstrap and JQuery -->
 	<link rel="stylesheet" href="bootstrap.min.css">
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 	<script src="bootstrap.min.js"></script>
 	<!-- Stylesheet -->
 	<link rel="stylesheet" href="style.css">
@@ -30,13 +31,18 @@
 					<label class="todo-input"><input class="text-center" type="submit/text" ng-model="$scope.newTodo" placeholder="Add a todo"/></label>
 				</form>
 				<div class="todo-list">
-					<div ng-repeat="x in todos" class="todo-item">
+					<div ng-repeat="x in todos | filter:searchTodos" class="todo-item">
 						<button ng-click="removeTodo($scope, x.key)"><p>{{x.body}}</p></button>
 					</div>
 				</div>
+				<!-- <div class="search-bar">
+					<form>
+						<label class="search-input"><input class="text-center" type="text" ng-model="searchTodos" placeholder="Search todos"/></label>
+					</form>
+					<p>Search Query: {{ searchTodos }}</p>
+				</div> -->
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
