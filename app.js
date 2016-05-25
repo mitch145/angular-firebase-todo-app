@@ -1,5 +1,5 @@
-var app = angular.module("MyTodoList", ["firebase"]);
-app.controller("myCtrl", function($scope, $firebaseObject) {
+var app = angular.module("MyTodoList", []);
+app.controller("myCtrl", function($scope) {
 
   $scope.searchTodos = '';
   // $scope.newTodo = '';
